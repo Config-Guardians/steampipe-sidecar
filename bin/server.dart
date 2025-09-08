@@ -10,6 +10,8 @@ void main(List<String> args) async {
   final ip = InternetAddress.anyIPv4;
 
   // Configure a pipeline that logs requests.
+  final router = PluginService().router;
+
   final handler = Pipeline()
       .addMiddleware(logRequests())
       .addMiddleware(rejectBadRequests())
