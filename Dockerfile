@@ -3,7 +3,7 @@ FROM dart:stable AS build
 
 # Resolve app dependencies.
 WORKDIR /app
-COPY sidecar .
+COPY . .
 RUN dart pub get
 
 # Copy app source code (except anything in .dockerignore) and AOT compile app.
@@ -22,6 +22,7 @@ RUN apt update
 RUN apt install curl vim -y
 RUN /bin/sh -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
 USER ubuntu
+RUN [ "bash", "-c", "steampipe plugin list" ]
 
 COPY --from=build /app/bin/server /sidecar/bin/
 
