@@ -3,7 +3,7 @@ import 'dart:io';
 const configPath = "/home/ubuntu/.steampipe/config";
 
 bool validPluginName(String name) {
-  return ["aws", "gcp", "azure", "oci"].contains(name);
+  return ["aws", "gcp", "azure", "oci", "github"].contains(name);
 }
 
 ProcessResult installPlugin(String pluginName) {
