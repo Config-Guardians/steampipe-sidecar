@@ -7,7 +7,11 @@ bool validPluginName(String name) {
 }
 
 ProcessResult installPlugin(String pluginName) {
-  return Process.runSync("steampipe", ["plugin", "install", pluginName]);
+  final res = Process.runSync("steampipe", ["plugin", "install", pluginName]);
+  if (!(res.stdout as String).contains("Already installed")) {
+    Process.runSync("steampipe", ["service", "restart"]);
+  }
+  return res;
 }
 
 void writeConfigToFile(String pluginName, String configuration) {
