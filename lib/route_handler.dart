@@ -50,6 +50,9 @@ class PluginService {
       );
     }
 
-    return Response.ok(json.encode({'message': 'Success!'}), headers: headers);
+    return Response.ok(
+      json.encode({'exitCode': exitCode, 'message': 'Success!'}),
+      headers: headers,
+    );
   }
 }
