@@ -17,6 +17,7 @@ WORKDIR /app
 EXPOSE 8080 9193
 ARG PASSWORD=password
 ENV STMPPPASSWORD=$PASSWORD
+ENV STEAMPIPE_CACHE=false
 
 RUN apt update
 RUN apt install curl vim -y
