@@ -20,10 +20,11 @@ ENV STMPPPASSWORD=$PASSWORD
 ENV STEAMPIPE_CACHE=false
 
 RUN apt update
-RUN apt install curl vim -y
+RUN apt install curl -y
 RUN /bin/sh -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
 USER ubuntu
-RUN [ "bash", "-c", "steampipe plugin list" ]
+# install preconfigured plugins
+RUN [ "bash", "-c", "steampipe plugin install aws github" ]
 
 COPY --from=build /app/bin/server /sidecar/bin/
 

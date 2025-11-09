@@ -13,6 +13,11 @@ const headers = {'Content-Type': 'application/json'};
 class PluginService {
   Router get router => _$PluginServiceRouter(this);
 
+  @Route.get("/")
+  Future<Response> _getHandler(Request req) async {
+    return Response.ok("Ok");
+  }
+
   @Route.post("/plugin")
   Future<Response> _installHandler(Request req) async {
     final Map map = json.decode(await req.readAsString());
@@ -37,6 +42,9 @@ class PluginService {
 
     writeConfigToFile(plugin, map["configuration"]);
     final ProcessResult(:exitCode, :stdout, :stderr) = installPlugin(plugin);
+
+    print("stdout: $stdout");
+    print("stderr: $stderr");
 
     if (exitCode != 0) {
       return Response.internalServerError(
