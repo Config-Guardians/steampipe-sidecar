@@ -10,8 +10,7 @@ This server handles HTTP GET requests to `/` and POST requests to `/plugin`
 
 # Running with the Dart SDK
 
-### This is not recommended as the entire repository revolves around Steampipe
-running in the same context, refer to [Running with Docker](#running-with-docker)
+### This is not recommended as the entire repository revolves around Steampipe running in the same context, refer to [Running with Docker](#running-with-docker)
 
 You can run the example with the [Dart SDK](https://dart.dev/get-dart)
 like this:
