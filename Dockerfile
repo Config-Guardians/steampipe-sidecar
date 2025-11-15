@@ -24,6 +24,7 @@ RUN apt install curl -y
 RUN /bin/sh -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
 USER ubuntu
 # install preconfigured plugins
+RUN [ "bash", "-c", "steampipe plugin list" ]
 RUN [ "bash", "-c", "steampipe plugin install aws github" ]
 
 COPY --from=build /app/bin/server /sidecar/bin/
